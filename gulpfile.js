@@ -1,0 +1,35 @@
+var gulp = require('gulp');
+
+var connect = require('gulp-connect');
+var uglify = require('gulp-uglify');  
+var htmlmin = require('gulp-htmlmin');
+ 
+gulp.task('dist', function () {
+    var options = {
+        removeComments: true,  //清除HTML注释
+        collapseWhitespace: true,  //压缩HTML
+        collapseBooleanAttributes: true,  //省略布尔属性的值 <input checked="true"/> ==> <input checked />
+        removeEmptyAttributes: true,  //删除所有空格作属性值 <input id="" /> ==> <input />
+        removeScriptTypeAttributes: true,  //删除<script>的type="text/javascript"
+        removeStyleLinkTypeAttributes: true,  //删除<style>和<link>的type="text/css"
+        minifyJS: true,  //压缩页面JS
+        minifyCSS: true  //压缩页面CSS
+    };
+    gulp.src('html_dev/*.html')
+        .pipe(htmlmin(options))
+        .pipe(gulp.dest('html'));
+
+    gulp.src('js_dev/*.js')  
+        .pipe(uglify())  
+        .pipe(gulp.dest('js'));  
+});
+//本地服务器
+gulp.task('server',function(){
+    connect.server({
+        root : '',
+        port : 8080,
+        livereload : true
+    });
+});
+
+gulp.task('default',['server']);

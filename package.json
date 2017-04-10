@@ -1,0 +1,21 @@
+  {
+  "name": "cms模板",
+  "version": "1.0.0",
+  "description": "cms模板",
+  "scripts": {
+    
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fidofigo/cms-tpl.git"
+  },
+  "author": "",
+  "license": "fidofigo",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-connect": "^2.3.1",
+    "gulp-htmlmin": "latest",
+    "gulp-uglify": "latest"  
+  }
+}
